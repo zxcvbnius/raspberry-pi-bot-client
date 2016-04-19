@@ -14,11 +14,11 @@
 
         <Button
             android:id="@+id/send_button"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_margin="1dp"
+            android:layout_margin="5dp"
             android:layout_alignParentRight="true"
-            android:text="Send"/>
+            android:background="@mipmap/send"/>
 
         <EditText
             android:id="@+id/message_input"
@@ -26,6 +26,8 @@
             android:layout_height="40dp"
             android:hint="input message here"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical|left"
             android:textSize="12sp"
             android:background="@null"/>
 

@@ -86,6 +86,7 @@ public class ChatRoomFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
+                Log.e(MainActivity.TAG, "onClick");
                 String text = messageEdit.getText().toString();
                 if (text.isEmpty())
                 {
