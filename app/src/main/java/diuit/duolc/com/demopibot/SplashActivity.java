@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 public class SplashActivity extends Activity
 {
     public final long COUNT_DOWN_TIME = 1000 * 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

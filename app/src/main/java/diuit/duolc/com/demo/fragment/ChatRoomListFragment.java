@@ -1,6 +1,7 @@
 package diuit.duolc.com.demo.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -17,6 +18,13 @@ import com.duolc.DiuitChat;
 import com.duolc.DiuitMessage;
 import com.duolc.DiuitMessagingAPI;
 import com.duolc.DiuitMessagingAPICallback;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +43,10 @@ public class ChatRoomListFragment extends Fragment {
     private ArrayList<DiuitChat> diuitChatArrayList = new ArrayList<>();
     private ChatListAdapter chatListAdapter;
 
+    /**Facebook**/
+    LoginButton loginButton;
+
+
     private CallbackListener callbackListener;
     public interface CallbackListener
     {
@@ -46,7 +58,56 @@ public class ChatRoomListFragment extends Fragment {
     {
         View view = inflater.inflate(R.layout.fragment_chat_list, null);
         this.charListView = (ListView) view.findViewById(R.id.chat_listview);
+        this.loginButton = (LoginButton) view.findViewById(R.id.login_button);
+        this.loginButton.setPublishPermissions("publish_actions");
+        //this.loginButton.setReadPermissions("user_friends","public_profile","user_friends","email");
+        this.loginButton.setFragment(this);
+        this.loginButton.registerCallback(DemoPi.callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.e(MainActivity.TAG, "FBLogin onSuccess");
+                Log.e(MainActivity.TAG, "authToken:" + loginResult.getAccessToken().getToken());
+                Log.e(MainActivity.TAG, "userId:" + loginResult.getAccessToken().getUserId());
+            }
+            @Override
+            public void onCancel() {Log.e(MainActivity.TAG, "FBLogin onCancel");}
+
+            @Override
+            public void onError(FacebookException error) {Log.e(MainActivity.TAG, "FBLogin onError:" + error.getMessage());}
+        });
         return view;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(this.getActivity());
+        DemoPi.callbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(DemoPi.callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        Log.e(MainActivity.TAG, "====== onSuccess ======");
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Log.e(MainActivity.TAG, "====== onCancel ======");
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        Log.e(MainActivity.TAG, "====== onError ====== " + exception.getMessage()) ;
+                    }
+                });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e(MainActivity.TAG, "====== onActivityResult ======");
+        DemoPi.callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
