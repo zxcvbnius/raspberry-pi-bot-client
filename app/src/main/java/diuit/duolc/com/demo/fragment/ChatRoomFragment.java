@@ -377,7 +377,7 @@ public class ChatRoomFragment extends Fragment {
                     viewHolder.othersIconText.setVisibility(View.VISIBLE);
                     //String name = DiuitMessagingAPI.getCurrentUser().getSerial();
                     viewHolder.othersIconText.setText("");
-                    int resourceId = R.mipmap.pi;//DiuitMessagingAPI.getCurrentUser().getSerial();
+                    int resourceId = R.mipmap.bot;//DiuitMessagingAPI.getCurrentUser().getSerial();
                     viewHolder.othersIconText.setBackgroundResource(resourceId);
                     viewHolder.message_content.setBackgroundResource(R.drawable.item_message_receving);
                 }
