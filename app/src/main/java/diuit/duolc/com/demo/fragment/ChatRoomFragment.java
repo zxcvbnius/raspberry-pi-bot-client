@@ -3,7 +3,6 @@ package diuit.duolc.com.demo.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -388,7 +387,7 @@ public class ChatRoomFragment extends Fragment {
             {
                 viewHolder.message_content.setText(diuitMessage.getData());
                 viewHolder.message_content.setVisibility(View.VISIBLE);
-                viewHolder.message_content_img.setVisibility(View.INVISIBLE);
+                viewHolder.message_content_img.setVisibility(View.GONE);
                 viewHolder.message_content_img.setImageBitmap(null);
                 viewHolder.message_content.setAutoLinkMask(0);
             }
@@ -396,42 +395,15 @@ public class ChatRoomFragment extends Fragment {
             {
                 viewHolder.message_content.setText( diuitMessage.getData() );
                 viewHolder.message_content.setVisibility(View.VISIBLE);
-                viewHolder.message_content_img.setVisibility(View.INVISIBLE);
+                viewHolder.message_content_img.setVisibility(View.GONE);
                 viewHolder.message_content_img.setImageBitmap(null);
                 viewHolder.message_content.setAutoLinkMask(Linkify.ALL);
             }
-            else if (  MimeType.isImageByMimeType(diuitMessage.getMime()) )
+            else if(  MimeType.isImageByMimeType(diuitMessage.getMime()) )
             {
                 viewHolder.message_content.setVisibility(View.GONE);
                 viewHolder.message_content_img.setVisibility(View.VISIBLE);
                 imageLoader.displayImage(diuitMessage.getData(), viewHolder.message_content_img, imageOptions);
-            }
-            else /*file*/
-            {
-                String temp = "Click here to download it ! ";
-                String name = null;
-                if( diuitMessage.getMeta() != null && diuitMessage.getMeta().has("name") )
-                {
-                    try
-                    {
-                        name = diuitMessage.getMeta().getString("name");
-                    }
-                    catch (JSONException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-                if (name != null )
-                {
-                    temp = name;
-                }
-
-                viewHolder.message_content.setText("You got a file ! " + temp +  "\n" + diuitMessage.getData() + ((name != null )? "?" + name : "")  );
-                viewHolder.message_content.setMovementMethod(LinkMovementMethod.getInstance());
-                viewHolder.message_content.setAutoLinkMask(Linkify.WEB_URLS );
-                viewHolder.message_content.setVisibility(View.VISIBLE);
-                viewHolder.message_content_img.setVisibility(View.INVISIBLE);
-                viewHolder.message_content_img.setImageBitmap(null);
             }
 
             /*message time*/

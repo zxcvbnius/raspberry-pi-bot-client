@@ -3,6 +3,8 @@ package diuit.duolc.com.demopibot;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.duolc.DiuitChat;
@@ -25,6 +27,10 @@ public class MainActivity extends FragmentActivity implements ChatRoomListFragme
     private ChatRoomFragment chatRoomFragment;
     @Override
     public void onCreate(Bundle bundle) {
+        Window window = this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor( this.getResources().getColor(R.color.black));
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_main);
         this.loginWithAutoToken("DemoPiUser");
