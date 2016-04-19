@@ -19,8 +19,17 @@ android {
     }
 }
 
+repositories {
+
+    maven {
+        url 'https://dl.bintray.com/duolc/maven'
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
+    compile files('libs/universal-image-loader-1.9.4.jar')
+    compile 'com.duolc.diuitapi:message:1.1.0'
 }
