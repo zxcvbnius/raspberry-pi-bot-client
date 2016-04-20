@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="#3b5998">
+                android:layout_height="80dp"
+                android:minHeight="80dp"
+                android:background="#F4F6F6">
 
     <ImageView
         android:id="@+id/chat_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/chat"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="10dp"/>
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="15dp"/>
 
     <ImageView
         android:id="@+id/chat_arrow"
@@ -37,7 +39,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:singleLine="true"
-            android:textColor="@color/white"
+            android:textColor="#333333"
             android:text="ChatroomName"/>
 
         <TextView

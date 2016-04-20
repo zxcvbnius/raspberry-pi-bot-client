@@ -7,15 +7,15 @@
     <TextView
         android:id="@+id/chat_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:textSize="20sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:gravity="center_vertical|left"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/grey"
+        android:gravity="center"
+        android:textColor="@color/white"
         android:padding="10dp"
-        android:text="CHATROOMS"/>
+        android:background="#2B5D8F"
+        android:text="Chats"/>
 
 
     <ListView
@@ -28,6 +28,7 @@
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
