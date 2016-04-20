@@ -9,7 +9,8 @@
         android:id="@+id/input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
 
         <Button
             android:id="@+id/send_button"
@@ -23,11 +24,11 @@
             android:id="@+id/message_input"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:hint="  input message here"
+            android:hint="input message here"
             android:gravity="center_vertical|left"
             android:textSize="12sp"
-            android:background="@color/white"/>
-
+            android:layout_marginLeft="5dp"
+            android:background="@null"/>
 
     </RelativeLayout>
 
@@ -48,35 +49,6 @@
             android:textColor="@color/white"
             android:text="Chats"/>
     </RelativeLayout>
-    <!--
-    <RelativeLayout
-        android:id="@+id/titleLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3b5998">
-
-        <ImageView
-            android:id="@+id/img_online"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/online"/>
-
-        <TextView
-            android:id="@+id/chatroom_name_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/img_online"
-            android:textSize="14sp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_vertical|left"
-            android:layout_marginTop="0dp"
-            android:textColor="@color/grey"
-            android:padding="10dp"
-            android:text="CHATROOMS"/>
-    </RelativeLayout>
-    -->
 
 
     <diuit.duolc.com.view.LoadMoreListView
