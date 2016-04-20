@@ -64,6 +64,11 @@ public class ChatRoomFragment extends Fragment {
     private int count = 10;
     private int page = 0;
 
+    private CallbackListener callbackListener;
+    public interface CallbackListener {
+        public void showImageFragment(String path);
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle)
@@ -166,6 +171,7 @@ public class ChatRoomFragment extends Fragment {
     public void onActivityCreated(Bundle bundle)
     {
         super.onActivityCreated(bundle);
+        this.callbackListener = (CallbackListener) this.getActivity();
         this.setImageLoader();
 
         try
@@ -315,7 +321,6 @@ public class ChatRoomFragment extends Fragment {
         }
     }
 
-
     class MessageListAdapter extends ArrayAdapter<DiuitMessage>
     {
         public MessageListAdapter(Context context, ArrayList<DiuitMessage> diuitMessageArrayList)
@@ -404,6 +409,12 @@ public class ChatRoomFragment extends Fragment {
             {
                 viewHolder.message_content.setVisibility(View.GONE);
                 viewHolder.message_content_img.setVisibility(View.VISIBLE);
+                viewHolder.message_content_img.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        callbackListener.showImageFragment(diuitMessage.getData());
+                    }
+                });
                 imageLoader.displayImage(diuitMessage.getData(), viewHolder.message_content_img, imageOptions);
             }
 

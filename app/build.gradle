@@ -23,6 +23,7 @@ repositories {
     maven {
         url 'https://dl.bintray.com/duolc/maven'
     }
+    maven { url "https://jitpack.io" }
     mavenCentral()
 }
 
@@ -33,4 +34,5 @@ dependencies {
     compile files('libs/universal-image-loader-1.9.4.jar')
     compile 'com.duolc.diuitapi:message:1.1.0'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.github.chrisbanes:PhotoView:1.2.6'
 }

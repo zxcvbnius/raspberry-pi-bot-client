@@ -16,15 +16,17 @@ import org.json.JSONObject;
 
 import diuit.duolc.com.demo.fragment.ChatRoomFragment;
 import diuit.duolc.com.demo.fragment.ChatRoomListFragment;
+import diuit.duolc.com.demo.fragment.ImageFragment;
 
 /**
  * Created by zxcvbnius on 4/18/16.
  */
-public class MainActivity extends FragmentActivity implements ChatRoomListFragment.CallbackListener
+public class MainActivity extends FragmentActivity implements ChatRoomListFragment.CallbackListener, ChatRoomFragment.CallbackListener
 {
     public static final String TAG = "DemoPiPot";
     private ChatRoomListFragment chatRoomListFragment;
     private ChatRoomFragment chatRoomFragment;
+    private ImageFragment imageFragment;
     @Override
     public void onCreate(Bundle bundle) {
         Window window = this.getWindow();
@@ -103,6 +105,20 @@ public class MainActivity extends FragmentActivity implements ChatRoomListFragme
                 .hide( this.chatRoomListFragment )
                 .show( this.chatRoomFragment )
                 .addToBackStack(ChatRoomFragment.TAG)
+                .commit();
+    }
+
+    @Override
+    public void showImageFragment(String url)
+    {
+        this.imageFragment = new ImageFragment();
+        this.imageFragment.bindUrl(url);
+        this.getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.in_from_right, R.anim.nothing, R.anim.nothing, R.anim.out_to_right)
+                .add( R.id.tabcontent , this.imageFragment, ImageFragment.TAG)
+                .hide( this.chatRoomFragment )
+                .show( this.imageFragment )
+                .addToBackStack(ImageFragment.TAG)
                 .commit();
     }
 }
