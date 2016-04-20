@@ -375,6 +375,7 @@ public class ChatRoomFragment extends Fragment {
                     viewHolder.selfIconText.setBackgroundResource(resourceId);
                     viewHolder.othersIconText.setVisibility(View.GONE);
                     viewHolder.message_content.setBackgroundResource(R.drawable.item_message_sending);
+                    viewHolder.message_content.setTextColor(getResources().getColor(R.color.white) );
                 }
                 else
                 {
@@ -385,6 +386,7 @@ public class ChatRoomFragment extends Fragment {
                     int resourceId = R.mipmap.bot;//DiuitMessagingAPI.getCurrentUser().getSerial();
                     viewHolder.othersIconText.setBackgroundResource(resourceId);
                     viewHolder.message_content.setBackgroundResource(R.drawable.item_message_receving);
+                    viewHolder.message_content.setTextColor(getResources().getColor(R.color.black) );
                 }
             }
 

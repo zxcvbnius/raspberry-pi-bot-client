@@ -32,7 +32,7 @@ public class MainActivity extends FragmentActivity implements ChatRoomListFragme
         Window window = this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor( this.getResources().getColor(R.color.black));
+        window.setStatusBarColor( this.getResources().getColor(R.color.grey_title));
         super.onCreate(bundle);
         this.setContentView(R.layout.activity_main);
         this.loginWithAutoToken("DemoPiUser");
