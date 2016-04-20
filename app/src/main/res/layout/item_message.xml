@@ -5,7 +5,7 @@
                 android:minHeight="65dp">
 
     <TextView
-        android:id="@+id/message_self_icon"
+        android:id="@+id/message_others_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/item_user1_icon_bg"
@@ -20,7 +20,7 @@
         android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/message_others_icon"
+        android:id="@+id/message_self_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/item_user1_icon_bg"
@@ -39,8 +39,8 @@
         android:id="@+id/message_content_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/message_self_icon"
-        android:layout_toLeftOf="@+id/message_others_icon"
+        android:layout_toRightOf="@+id/message_others_icon"
+        android:layout_toLeftOf="@+id/message_self_icon"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
@@ -52,8 +52,8 @@
         android:id="@+id/message_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/message_self_icon"
-        android:layout_toLeftOf="@+id/message_others_icon"
+        android:layout_toRightOf="@+id/message_others_icon"
+        android:layout_toLeftOf="@+id/message_self_icon"
         android:layout_below="@+id/message_content_img"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -68,8 +68,8 @@
         android:id="@+id/message_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/message_others_icon"
-        android:layout_toRightOf="@+id/message_self_icon"
+        android:layout_toLeftOf="@+id/message_self_icon"
+        android:layout_toRightOf="@+id/message_others_icon"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@+id/message_content"
