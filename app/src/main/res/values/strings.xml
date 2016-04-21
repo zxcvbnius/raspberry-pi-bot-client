@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">DemoPiBot</string>
     <string name="facebook_app_id">906379012812367</string>
+
+    <string name="pull_to_refresh_pull_label">Pull to refresh...</string>
+    <string name="pull_to_refresh_release_label">Release to refresh...</string>
+    <string name="pull_to_refresh_refreshing_label">Loading...</string>
+    <string name="pull_to_refresh_tap_label">Tap to refresh...</string>
 </resources>

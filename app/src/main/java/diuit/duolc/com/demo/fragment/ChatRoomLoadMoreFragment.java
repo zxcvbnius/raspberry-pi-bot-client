@@ -40,9 +40,9 @@ import diuit.duolc.com.view.LoadMoreListView;
 /**
  * Created by zxcvbnius on 4/19/16.
  */
-public class ChatRoomFragment extends Fragment {
+public class ChatRoomLoadMoreFragment extends Fragment {
 
-    public static final String TAG = "ChatRoomFragment";
+    public static final String TAG = "ChatRoomLoadMoreFragment";
 
     // ui
     private TextView chatroomNameText;
@@ -73,7 +73,7 @@ public class ChatRoomFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle)
     {
-        View view = inflater.inflate(R.layout.fragment_chat, null);
+        View view = inflater.inflate(R.layout.fragment_chat_load_more, null);
         this.chatroomNameText = (TextView) view.findViewById(R.id.chatroom_name_text);
         this.messageEdit = (EditText) view.findViewById(R.id.message_input);
         this.sendButton = (Button) view.findViewById(R.id.send_button);
@@ -199,8 +199,8 @@ public class ChatRoomFragment extends Fragment {
                         @Override
                         public void run()
                         {
-                            ChatRoomFragment.this.diuitMessageArrayList.clear();
-                            ChatRoomFragment.this.diuitMessageArrayList.addAll(diuitMessageArrayList);
+                            ChatRoomLoadMoreFragment.this.diuitMessageArrayList.clear();
+                            ChatRoomLoadMoreFragment.this.diuitMessageArrayList.addAll(diuitMessageArrayList);
                             messageListAdapter.notifyDataSetChanged();
                             messageListView.onLoadMoreComplete();
                         }
@@ -253,7 +253,7 @@ public class ChatRoomFragment extends Fragment {
                                 public void run()
                                 {
                                     // ChatRoomFragment.this.messageArrayList.clear();
-                                    ChatRoomFragment.this.diuitMessageArrayList.addAll(diuitMessageArrayList);
+                                    ChatRoomLoadMoreFragment.this.diuitMessageArrayList.addAll(diuitMessageArrayList);
                                     messageListAdapter.notifyDataSetChanged();
                                     messageListView.onLoadMoreComplete();
                                 }

@@ -14,7 +14,8 @@ import com.duolc.DiuitMessagingAPICallback;
 
 import org.json.JSONObject;
 
-import diuit.duolc.com.demo.fragment.ChatRoomFragment;
+import diuit.duolc.com.demo.fragment.ChatRoomPullMoreFragment;
+import diuit.duolc.com.demo.fragment.ChatRoomLoadMoreFragment;
 import diuit.duolc.com.demo.fragment.ChatRoomListFragment;
 import diuit.duolc.com.demo.fragment.ImageFragment;
 import diuit.duolc.com.demo.fragment.VideoFragment;
@@ -22,11 +23,12 @@ import diuit.duolc.com.demo.fragment.VideoFragment;
 /**
  * Created by zxcvbnius on 4/18/16.
  */
-public class MainActivity extends FragmentActivity implements ChatRoomListFragment.CallbackListener, ChatRoomFragment.CallbackListener
+public class MainActivity extends FragmentActivity implements ChatRoomListFragment.CallbackListener, ChatRoomLoadMoreFragment.CallbackListener, ChatRoomPullMoreFragment.CallbackListener
 {
     public static final String TAG = "DemoPiPot";
     private ChatRoomListFragment chatRoomListFragment;
-    private ChatRoomFragment chatRoomFragment;
+    //private ChatRoomFragment chatRoomFragment;
+    private ChatRoomPullMoreFragment chatRoomFragment;
     private ImageFragment imageFragment;
     private VideoFragment videoFragment;
     @Override
@@ -85,6 +87,9 @@ public class MainActivity extends FragmentActivity implements ChatRoomListFragme
                     if (chatRoomFragment != null && chatRoomFragment.isVisible()) {
                         if (chatRoomFragment.getBindChat().getId() == diuitMessage.getDiuitChat().getId()) {
                             chatRoomFragment.receivingMessage(diuitMessage);
+                            Log.e(MainActivity.TAG, "Receiving Message:");
+                            Log.e(MainActivity.TAG, "data: " + diuitMessage.getData());
+                            Log.e(MainActivity.TAG, "meta: " + diuitMessage.getMeta());
                             if( diuitMessage.getData().contains("If you want to stop the video")) {
                                 showVideoFragment();
                             }
@@ -103,14 +108,14 @@ public class MainActivity extends FragmentActivity implements ChatRoomListFragme
     @Override
     public void entryChatRoom(DiuitChat diuitChat)
     {
-        this.chatRoomFragment = new ChatRoomFragment();
+        this.chatRoomFragment = new ChatRoomPullMoreFragment();
         this.chatRoomFragment.bindChat(diuitChat);
         this.getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.in_from_right, R.anim.nothing, R.anim.nothing, R.anim.out_to_right)
-                .add( R.id.tabcontent , this.chatRoomFragment, ChatRoomFragment.TAG)
+                .add( R.id.tabcontent , this.chatRoomFragment, ChatRoomLoadMoreFragment.TAG)
                 .hide( this.chatRoomListFragment )
                 .show( this.chatRoomFragment )
-                .addToBackStack(ChatRoomFragment.TAG)
+                .addToBackStack(ChatRoomLoadMoreFragment.TAG)
                 .commit();
     }
 
