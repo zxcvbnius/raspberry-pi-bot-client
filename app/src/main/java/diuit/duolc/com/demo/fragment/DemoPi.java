@@ -7,4 +7,5 @@ import com.facebook.CallbackManager;
  */
 public class DemoPi {
     public static CallbackManager callbackManager;
+    public static final String videoUrl = "http://54.153.28.72:3012/?action=stream";
 }

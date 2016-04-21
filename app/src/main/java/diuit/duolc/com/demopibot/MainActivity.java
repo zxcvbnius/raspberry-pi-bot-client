@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import diuit.duolc.com.demo.fragment.ChatRoomFragment;
 import diuit.duolc.com.demo.fragment.ChatRoomListFragment;
 import diuit.duolc.com.demo.fragment.ImageFragment;
+import diuit.duolc.com.demo.fragment.VideoFragment;
 
 /**
  * Created by zxcvbnius on 4/18/16.
@@ -27,6 +28,7 @@ public class MainActivity extends FragmentActivity implements ChatRoomListFragme
     private ChatRoomListFragment chatRoomListFragment;
     private ChatRoomFragment chatRoomFragment;
     private ImageFragment imageFragment;
+    private VideoFragment videoFragment;
     @Override
     public void onCreate(Bundle bundle) {
         Window window = this.getWindow();
@@ -79,9 +81,13 @@ public class MainActivity extends FragmentActivity implements ChatRoomListFragme
                 public void run()
                 {
                     chatRoomListFragment.receivingMessage(diuitMessage);
+
                     if (chatRoomFragment != null && chatRoomFragment.isVisible()) {
                         if (chatRoomFragment.getBindChat().getId() == diuitMessage.getDiuitChat().getId()) {
                             chatRoomFragment.receivingMessage(diuitMessage);
+                            if( diuitMessage.getData().contains("If you want to stop the video")) {
+                                showVideoFragment();
+                            }
                         }
                     }
                 }
@@ -119,6 +125,18 @@ public class MainActivity extends FragmentActivity implements ChatRoomListFragme
                 .hide( this.chatRoomFragment )
                 .show( this.imageFragment )
                 .addToBackStack(ImageFragment.TAG)
+                .commit();
+    }
+
+    public void showVideoFragment()
+    {
+        this.videoFragment = new VideoFragment();
+        this.getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.in_from_right, R.anim.nothing, R.anim.nothing, R.anim.out_to_right)
+                .add( R.id.tabcontent , this.videoFragment, VideoFragment.TAG)
+                .hide( this.chatRoomFragment )
+                .show( this.videoFragment )
+                .addToBackStack(VideoFragment.TAG)
                 .commit();
     }
 }
