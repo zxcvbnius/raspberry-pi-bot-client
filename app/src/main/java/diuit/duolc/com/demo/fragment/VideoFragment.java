@@ -34,13 +34,18 @@ public class VideoFragment extends Fragment {
         this.webView.getSettings().setSupportZoom(false);
         String html = "<!DOCTYPE html>\n" +
                 "<html>\n" +
-                "    <head>\n" +
-                "        <meta charset=\"utf-8\">\n" +
-                "        <title>DemoPiBot</title>\n" +
-                "    </head>\n" +
-                "    <body>\n" +
-                "        <img style=\"-webkit-user-select: none\" src=\"http://54.153.28.72:3012/?action=stream\">\n" +
-                "    </body>\n" +
+                "<head>\n" +
+                "      <meta charset=\"utf-8\">\n" +
+                "      <title>Hello Bot</title>\n" +
+                "      <style media=\"screen\">\n" +
+                "      html, body { height: 100%; text-align: center; }\n" +
+                "      html { display: table; margin: auto; }\n" +
+                "      body { display: table-cell; vertical-align: middle;}\n" +
+                "      </style>\n" +
+                "</head>\n" +
+                "<body bgcolor=\"#000000\">\n" +
+                "    <img style=\"max-width: 100%;-webkit-user-select:none;\" src=\"http://54.153.28.72:3012/?action=stream\">\n" +
+                "</body>\n" +
                 "</html>\n";
         this.webView.loadData( html,"text/html", "utf-8");
         //this.videoView.setVideoURI(Uri.parse(DemoPi.videoUrl));
